@@ -1,0 +1,55 @@
+{% extends "paginas/modelo.html" %}
+
+{% block conteudo %}
+<h3>
+    Lista de <b>Horários de Aula</b>
+</h3>
+
+<hr>
+
+<table class="table table-striped">
+    <thead>
+        <th>Turma</th>
+        <th>Disciplina</th>
+        <th>Dia da Semana</th>
+        <th>Hora de Início</th>
+        <th>Hora de Fim</th>
+        <th>Opções</th>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+            <tr>
+                <td>{{ object.turma.curso.nome }} - {{ object.turma.ano }}/{{ object.turma.semestre }}</td>
+                <td>{{ object.disciplina.nome }}</td>
+                <td>{{ object.dia_semana }}</td>
+                <td>{{ object.hora_inicio }}</td>
+                <td>{{ object.hora_fim }}</td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-gear"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item link-primary" href="{% url 'editar-horarioaula' object.pk  %}">
+                                    <i class="bi bi-pencil-square"></i> Editar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item link-danger" href="{% url 'excluir-horarioaula' object.pk  %}">
+                                    <i class="bi bi-trash"></i> Excluir
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6">Nenhum registro encontrado.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

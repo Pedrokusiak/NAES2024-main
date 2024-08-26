@@ -1,0 +1,18 @@
+{% extends "paginas/modelo.html" %}
+<!-- Carrega a biblioteca de funções (filtros, templatetags) -->
+{% load static %}
+
+{% block conteudo %}
+
+<h3>Sistema de Gestão Escolar</h3>
+<p>O objetivo deste projeto é desenvolver um sistema de gestão escolar usando Python e Django.
+    O sistema permitirá a administração eficiente de diversas entidades escolares, como alunos, professores, cursos, turmas, matrículas, avaliações, disciplinas e horários de aula.
+</p>
+
+<h4>Diagrama de Caso de Uso</h4>
+<img src="{% static 'img/school_use_case_diagram.png' %}" alt="Diagrama de Caso de Uso">
+
+<h4>Diagrama de Classes</h4>
+<img src="{% static 'img/school_class_diagram_no_borders.png' %}" alt="Diagrama de Classes">
+
+{% endblock %}
